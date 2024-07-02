@@ -1,0 +1,24 @@
+services:
+  ? ADP-JKR-Example-core-tests
+  : build:
+      target: development
+    image: ADP-JKR-Example-core-tests-development
+    container_name: ADP-JKR-Example-core-tests
+    user: root
+    entrypoint: sh -c "cd /home/dotnet && chown -R dotnet:dotnet . && su dotnet -c 'dotnet watch --project test/ADP.JKR.Example.Core.Tests/ADP.JKR.Example.Core.Tests.csproj test /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=./test-output/'"
+    volumes:
+      - ./src/ADP.JKR.Example.Core:/home/dotnet/src/ADP.JKR.Example.Core
+      - ./test/ADP.JKR.Example.Core.Tests:/home/dotnet/test/ADP.JKR.Example.Core.Tests
+      - ./test-output:/home/dotnet/ADP.JKR.Example.Core.Tests/test-output
+
+  ? ADP-JKR-Example-api-tests
+  : build:
+      target: development
+    image: ADP-JKR-Example-api-tests-development
+    container_name: ADP-JKR-Example-api-tests
+    user: root
+    entrypoint: sh -c "cd /home/dotnet && chown -R dotnet:dotnet . && su dotnet -c 'dotnet watch --project test/ADP.JKR.Example.Api.Tests/ADP.JKR.Example.Api.Tests.csproj test /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=./test-output/'"
+    volumes:
+      - ./src/ADP.JKR.Example.Api:/home/dotnet/src/ADP.JKR.Example.Api
+      - ./test/ADP.JKR.Example.Api.Tests:/home/dotnet/test/ADP.JKR.Example.Api.Tests
+      - ./test-output:/home/dotnet/ADP.JKR.Example.Api.Tests/test-output

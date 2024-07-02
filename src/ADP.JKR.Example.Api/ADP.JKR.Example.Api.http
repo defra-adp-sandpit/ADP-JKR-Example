@@ -1,0 +1,32 @@
+@ADP.JKR.Example.Api_HostAddress = https://localhost:7118
+
+GET {{ADP.JKR.Example.Api_HostAddress}}/api/demo
+
+###
+
+POST {{ADP.JKR.Example.Api_HostAddress}}/api/demo
+Content-Type: application/json
+
+{
+    "name":"item3"
+}
+
+###
+
+PATCH {{ADP.JKR.Example.Api_HostAddress}}/api/demo
+Content-Type: application/json
+
+{
+    "id":"1",
+    "name":"item3"
+}
+
+###
+
+GET {{ADP.JKR.Example.Api_HostAddress}}/api/demo/1
+
+###
+
+DELETE {{ADP.JKR.Example.Api_HostAddress}}/api/demo/3
+
+###

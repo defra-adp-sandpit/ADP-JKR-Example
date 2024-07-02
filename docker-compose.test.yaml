@@ -1,0 +1,16 @@
+services:
+  ? ADP-JKR-Example
+  : build:
+      target: development
+    image: ADP-JKR-Example-development
+    container_name: ADP-JKR-Example-test
+    user: root
+    entrypoint: sh -c "cd /home/dotnet && chown -R dotnet:dotnet . && su dotnet -c 'dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=./test-output/'"
+    volumes:
+      - ./ADP.JKR.Example.sln:/home/dotnet/ADP.JKR.Example.sln
+      - ./src/ADP.JKR.Example.Core:/home/dotnet/src/ADP.JKR.Example.Core
+      - ./test/ADP.JKR.Example.Core.Tests:/home/dotnet/test/ADP.JKR.Example.Core.Tests
+      - ./src/ADP.JKR.Example.Api:/home/dotnet/src/ADP.JKR.Example.Api
+      - ./test/ADP.JKR.Example.Api.Tests:/home/dotnet/test/ADP.JKR.Example.Api.Tests
+      - ./test/ADP.JKR.Example.Api.Tests/test-output:/home/dotnet/test/ADP.JKR.Example.Api.Tests/test-output
+      - ./test/ADP.JKR.Example.Core.Tests/test-output:/home/dotnet/test/ADP.JKR.Example.Core.Tests/test-output

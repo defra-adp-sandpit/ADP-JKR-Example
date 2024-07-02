@@ -1,0 +1,12 @@
+# This override file should be used when running this service in isolation
+# to provide required sibling services for local testing
+
+services:
+  ? ADP-JKR-Example
+  : build:
+      target: development
+    ports:
+      - "3007:3007"
+    volumes:
+      - ./src/ADP.JKR.Example.Api:/home/dotnet/src/ADP.JKR.Example.Api
+      - ./src/ADP.JKR.Example.Core:/home/dotnet/src/ADP.JKR.Example.Core

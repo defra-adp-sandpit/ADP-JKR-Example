@@ -1,0 +1,10 @@
+services:
+  ? ADP-JKR-Example
+  : build:
+      context: .
+      target: production
+    image: ADP-JKR-Example
+    container_name: ADP-JKR-Example
+    environment:
+      APPINSIGHTS_CONNECTIONSTRING: ${APPINSIGHTS_CONNECTIONSTRING}
+      APPINSIGHTS_CLOUDROLE: ADP-JKR-Example-local

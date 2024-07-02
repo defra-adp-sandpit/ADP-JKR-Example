@@ -1,0 +1,11 @@
+{{- include "adp-helm-library.deployment" (list . "ADP-JKR-Example.deployment") -}}
+{{- define "ADP-JKR-Example.deployment" -}}
+spec:
+  template:
+    spec:
+      containers:
+      - {{ include "adp-helm-library.container" (list . "ADP-JKR-Example.container") }}
+      volumes:
+      - name: {{ .Values.volumeMounts.name }}
+        emptyDir: {}
+{{- end -}}

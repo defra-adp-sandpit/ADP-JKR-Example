@@ -1,0 +1,36 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: ADP-JKR-Example
+  description: A test backend .net component
+  annotations:
+    github.com/project-slug: defra-adp-sandpit/ADP-JKR-Example
+    dev.azure.com/project: DEFRA-ADP
+    dev.azure.com/build-definition: ADP-JKR-Example
+    sonarqube.org/project-key: ADP-JKR-Example
+    grafana/dashboard-selector: "folderTitle == 'Managed Prometheus'"
+    backstage.io/kubernetes-id: ADP-JKR-Example
+  links:
+    - url: https://github.com/defra-adp-sandpit/ADP-JKR-Example
+      title: GitHub Repository
+      icon: github
+    - url: https://dev.azure.com/defragovuk/DEFRA-ADP
+      title: Azure DevOps Project
+      icon: project
+    - url: https://sonarcloud.io/project/overview?id=ADP-JKR-Example
+      title: SonarCloud Analysis
+      icon: check
+    - url: https://snyk.io/test/github/DEFRA/ADP-JKR-Example
+      title: Snyk Analysis
+      icon: policy
+    - url: https://portal.azure.com/defradev.onmicrosoft.com
+      title: Azure Portal - Defra Dev
+      icon: cloud
+    - url: https://portal.azure.com/Defra.onmicrosoft.com
+      title: Azure Portal - Defra
+      icon: cloud
+spec:
+  type: backend
+  lifecycle: alpha
+  owner: group:default/fcp-jkr-demo
+  system: system:default/adp-shared-services
